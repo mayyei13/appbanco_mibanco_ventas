@@ -3,8 +3,9 @@ import 'package:provider/provider.dart';
 
 import 'navigation/app_router.dart';
 import 'ui/theme/app_theme.dart';
-import 'viewmodel/auth_viewmodel.dart';
-import 'viewmodel/home_viewmodel.dart';
+// Importaciones correctas de tus nuevos ViewModels
+import 'viewmodel/auth_oficial_viewmodel.dart';
+import 'viewmodel/cartera_viewmodel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,33 +16,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
-
       providers: [
-
+        // Cambiamos a los nombres de clase que definimos para el Oficial
         ChangeNotifierProvider(
-          create: (_) => AuthViewModel(),
+          create: (_) => AuthOficialViewModel(),
         ),
-
         ChangeNotifierProvider(
-          create: (_) => HomeViewModel(),
+          create: (_) => CarteraViewModel(),
         ),
-
       ],
-
       child: MaterialApp(
-
         debugShowCheckedModeBanner: false,
-
-        title: 'Mi Banco',
-
+        title: 'Portal Oficial de Crédito', // Nombre institucional
         theme: AppTheme.lightTheme,
-
         initialRoute: AppRouter.login,
-
         routes: AppRouter.routes,
-
       ),
     );
   }

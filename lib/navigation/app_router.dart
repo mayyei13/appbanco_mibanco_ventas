@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-// Cambia este import por la ruta exacta de tu archivo bueno
-import '../view/auth/login_screen.dart'; 
-import '../view/home/dashboard_screen.dart';
+// Asegúrate de que estas rutas coincidan exactamente con la ubicación de tus archivos
+import '../view/auth/login_oficial_screen.dart'; 
+import '../view/home/cartera_diaria_screen.dart';
 
 class AppRouter {
   static const String login = '/';
-  static const String dashboard = '/dashboard';
+  static const String cartera = '/cartera'; // Cambiamos el nombre para que sea más descriptivo
 
   static Map<String, WidgetBuilder> routes = {
-    login: (context) => LoginScreen(),
-    dashboard: (context) =>  DashboardScreen(),
+    // Aquí usamos los nombres de las clases que definimos en los pasos anteriores
+    login: (context) => const LoginOficialScreen(),
+    cartera: (context) => const CarteraDiariaScreen(),
   };
 }
