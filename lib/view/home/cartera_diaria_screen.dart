@@ -6,22 +6,33 @@ class CarteraDiariaScreen extends StatefulWidget {
   const CarteraDiariaScreen({super.key});
 
   @override
-  State<CarteraDiariaScreen> createState() => _CarteraDiariaScreenState();
+  State<CarteraDiariaScreen> createState() =>
+      _CarteraDiariaScreenState();
 }
 
-class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
+class _CarteraDiariaScreenState
+    extends State<CarteraDiariaScreen> {
 
   int _selectedIndex = 0;
 
-  // COLORES TEMÁTICOS MI BANCO
+  // PALETA OSCURA VERDE
   static const Color mibancoGreen =
-      Color(0xFF00843D);
+      Color(0xFF00A859);
 
   static const Color mibancoYellow =
       Color(0xFFFFD100);
 
-  static const Color mibancoLight =
-      Color(0xFFF5F7F6);
+  static const Color mibancoDark =
+      Color(0xFF001A0D);
+
+  static const Color mibancoCard =
+      Color(0xFF063B22);
+
+  static const Color mibancoCard2 =
+      Color(0xFF0B4F2D);
+
+  static const Color mibancoListBg =
+      Color(0xFF01150C);
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +42,11 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
     return Scaffold(
 
-      backgroundColor: mibancoGreen,
+      backgroundColor: mibancoDark,
 
       appBar: AppBar(
 
-        backgroundColor: mibancoGreen,
+        backgroundColor: mibancoDark,
 
         elevation: 0,
 
@@ -72,7 +83,8 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
                 fontSize: 18,
 
-                fontWeight: FontWeight.bold,
+                fontWeight:
+                    FontWeight.bold,
 
                 color: Colors.white,
 
@@ -106,15 +118,18 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
               Icons.logout_rounded,
 
-              color: Colors.white,
+              color: mibancoYellow,
 
             ),
 
             onPressed: () {
 
               Navigator.pushReplacementNamed(
+
                 context,
+
                 '/',
+
               );
 
             },
@@ -139,13 +154,16 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
               decoration: const BoxDecoration(
 
-                color: mibancoLight,
+                color: mibancoListBg,
 
-                borderRadius: BorderRadius.only(
+                borderRadius:
+                    BorderRadius.only(
 
-                  topLeft: Radius.circular(30),
+                  topLeft:
+                      Radius.circular(30),
 
-                  topRight: Radius.circular(30),
+                  topRight:
+                      Radius.circular(30),
 
                 ),
 
@@ -159,89 +177,143 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
                   Expanded(
 
-                    child: Padding(
+                    child: Container(
 
-                      padding:
-                          const EdgeInsets.symmetric(
-                        horizontal: 20.0,
+                      margin:
+                          const EdgeInsets.only(
+                        top: 10,
                       ),
 
-                      child: Column(
+                      padding:
+                          const EdgeInsets.only(
+                        top: 20,
+                      ),
 
-                        crossAxisAlignment:
-                            CrossAxisAlignment.start,
+                      decoration:
+                          const BoxDecoration(
 
-                        children: [
+                        color: Color(
+                          0xFF021E12,
+                        ),
 
-                          const Row(
+                        borderRadius:
+                            BorderRadius.only(
 
-                            mainAxisAlignment:
-                                MainAxisAlignment
-                                    .spaceBetween,
+                          topLeft:
+                              Radius.circular(
+                            30,
+                          ),
 
-                            children: [
+                          topRight:
+                              Radius.circular(
+                            30,
+                          ),
 
-                              Text(
+                        ),
 
-                                "Hoja de Ruta",
+                      ),
 
-                                style: TextStyle(
+                      child: Padding(
 
-                                  fontSize: 20,
+                        padding:
+                            const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                        ),
 
-                                  fontWeight:
-                                      FontWeight.bold,
+                        child: Column(
 
-                                  color: mibancoGreen,
+                          crossAxisAlignment:
+                              CrossAxisAlignment
+                                  .start,
+
+                          children: [
+
+                            const Row(
+
+                              mainAxisAlignment:
+                                  MainAxisAlignment
+                                      .spaceBetween,
+
+                              children: [
+
+                                Text(
+
+                                  "Hoja de Ruta",
+
+                                  style: TextStyle(
+
+                                    fontSize: 22,
+
+                                    fontWeight:
+                                        FontWeight
+                                            .bold,
+
+                                    color:
+                                        Colors.white,
+
+                                  ),
 
                                 ),
 
-                              ),
+                                Icon(
 
-                              Icon(
+                                  Icons.filter_list,
 
-                                Icons.filter_list,
+                                  color:
+                                      mibancoYellow,
 
-                                color: mibancoGreen,
+                                ),
 
-                              ),
-
-                            ],
-
-                          ),
-
-                          const SizedBox(height: 15),
-
-                          Expanded(
-
-                            child: ListView.builder(
-
-                              itemCount:
-                                  carteraVM.clientes.length,
-
-                              physics:
-                                  const BouncingScrollPhysics(),
-
-                              itemBuilder:
-                                  (context, index) {
-
-                                final cliente =
-                                    carteraVM
-                                        .clientes[index];
-
-                                return _buildProfessionalClientCard(
-                                  cliente,
-                                  index,
-                                  carteraVM,
-                                );
-
-                              },
+                              ],
 
                             ),
 
-                          ),
+                            const SizedBox(
+                                height: 18),
 
-                        ],
+                            Expanded(
+
+                              child:
+                                  ListView.builder(
+
+                                itemCount:
+                                    carteraVM
+                                        .clientes
+                                        .length,
+
+                                physics:
+                                    const BouncingScrollPhysics(),
+
+                                itemBuilder:
+                                    (
+                                      context,
+                                      index,
+                                    ) {
+
+                                  final cliente =
+                                      carteraVM
+                                              .clientes[
+                                          index];
+
+                                  return _buildProfessionalClientCard(
+
+                                    cliente,
+
+                                    index,
+
+                                    carteraVM,
+
+                                  );
+
+                                },
+
+                              ),
+
+                            ),
+
+                          ],
+
+                        ),
 
                       ),
 
@@ -267,15 +339,16 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
       floatingActionButton:
           FloatingActionButton(
 
-        backgroundColor: mibancoYellow,
+        backgroundColor:
+            mibancoYellow,
 
-        elevation: 4,
+        elevation: 6,
 
         child: const Icon(
 
           Icons.add_location_alt_rounded,
 
-          color: mibancoGreen,
+          color: mibancoDark,
 
         ),
 
@@ -293,13 +366,16 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
     double efectividad =
         vm.totalVisitas > 0
+
             ? (vm.completados /
                 vm.totalVisitas)
+
             : 0;
 
     return Container(
 
-      padding: const EdgeInsets.symmetric(
+      padding:
+          const EdgeInsets.symmetric(
 
         vertical: 20,
 
@@ -310,7 +386,8 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
       child: Row(
 
         mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+            MainAxisAlignment
+                .spaceBetween,
 
         children: [
 
@@ -362,17 +439,33 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
       children: [
 
-        Icon(
+        Container(
 
-          icon,
+          padding:
+              const EdgeInsets.all(10),
 
-          color: mibancoYellow,
+          decoration: BoxDecoration(
 
-          size: 24,
+            color:
+                mibancoCard.withOpacity(0.9),
+
+            shape: BoxShape.circle,
+
+          ),
+
+          child: Icon(
+
+            icon,
+
+            color: mibancoYellow,
+
+            size: 24,
+
+          ),
 
         ),
 
-        const SizedBox(height: 6),
+        const SizedBox(height: 8),
 
         Text(
 
@@ -384,7 +477,8 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
             fontSize: 22,
 
-            fontWeight: FontWeight.bold,
+            fontWeight:
+                FontWeight.bold,
 
           ),
 
@@ -400,7 +494,8 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
             fontSize: 11,
 
-            fontWeight: FontWeight.w500,
+            fontWeight:
+                FontWeight.w500,
 
           ),
 
@@ -412,22 +507,75 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
   }
 
+  // ACCIONES RÁPIDAS
   Widget _buildQuickActions() {
 
     return Container(
 
-      margin: const EdgeInsets.symmetric(
+      margin:
+          const EdgeInsets.symmetric(
 
         vertical: 20,
 
+        horizontal: 15,
+
+      ),
+
+      padding:
+          const EdgeInsets.symmetric(
+
+        vertical: 18,
+
         horizontal: 10,
+
+      ),
+
+      decoration: BoxDecoration(
+
+        gradient: const LinearGradient(
+
+          colors: [
+
+            mibancoCard,
+
+            mibancoCard2,
+
+          ],
+
+        ),
+
+        borderRadius:
+            BorderRadius.circular(24),
+
+        border: Border.all(
+
+          color:
+              mibancoGreen.withOpacity(0.4),
+
+        ),
+
+        boxShadow: [
+
+          BoxShadow(
+
+            color:
+                Colors.black.withOpacity(
+              0.25,
+            ),
+
+            blurRadius: 10,
+
+          ),
+
+        ],
 
       ),
 
       child: Row(
 
         mainAxisAlignment:
-            MainAxisAlignment.spaceEvenly,
+            MainAxisAlignment
+                .spaceEvenly,
 
         children: [
 
@@ -470,13 +618,34 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
         Container(
 
-          padding: const EdgeInsets.all(12),
+          padding:
+              const EdgeInsets.all(14),
 
           decoration: BoxDecoration(
 
-            color: mibancoYellow.withOpacity(0.2),
+            color: mibancoDark,
 
             shape: BoxShape.circle,
+
+            border: Border.all(
+
+              color: mibancoGreen
+                  .withOpacity(0.5),
+
+            ),
+
+            boxShadow: [
+
+              BoxShadow(
+
+                color: Colors.black
+                    .withOpacity(0.2),
+
+                blurRadius: 8,
+
+              ),
+
+            ],
 
           ),
 
@@ -484,7 +653,7 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
             icon,
 
-            color: mibancoGreen,
+            color: mibancoYellow,
 
             size: 24,
 
@@ -502,9 +671,10 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
             fontSize: 11,
 
-            fontWeight: FontWeight.w600,
+            fontWeight:
+                FontWeight.w600,
 
-            color: mibancoGreen,
+            color: Colors.white,
 
           ),
 
@@ -516,10 +686,15 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
   }
 
+  // TARJETAS CLIENTES
   Widget _buildProfessionalClientCard(
+
     cliente,
+
     int index,
+
     CarteraViewModel vm,
+
   ) {
 
     bool isVisitado =
@@ -527,27 +702,50 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
     return Container(
 
-      margin: const EdgeInsets.only(
+      margin:
+          const EdgeInsets.only(
         bottom: 15,
       ),
 
       decoration: BoxDecoration(
 
-        color: Colors.white,
+        gradient: const LinearGradient(
+
+          begin: Alignment.topLeft,
+
+          end: Alignment.bottomRight,
+
+          colors: [
+
+            mibancoCard,
+
+            mibancoCard2,
+
+          ],
+
+        ),
 
         borderRadius:
-            BorderRadius.circular(20),
+            BorderRadius.circular(22),
+
+        border: Border.all(
+
+          color:
+              mibancoGreen.withOpacity(0.3),
+
+        ),
 
         boxShadow: [
 
           BoxShadow(
 
             color:
-                Colors.black.withOpacity(0.04),
+                Colors.black.withOpacity(0.25),
 
-            blurRadius: 10,
+            blurRadius: 12,
 
-            offset: const Offset(0, 4),
+            offset:
+                const Offset(0, 6),
 
           ),
 
@@ -563,7 +761,9 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
           onTap: () {
 
-            vm.marcarComoVisitado(index);
+            vm.marcarComoVisitado(
+              index,
+            );
 
           },
 
@@ -572,33 +772,46 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
             horizontal: 20,
 
-            vertical: 10,
+            vertical: 12,
 
           ),
 
           leading: Container(
 
-            padding: const EdgeInsets.all(10),
+            padding:
+                const EdgeInsets.all(10),
 
             decoration: BoxDecoration(
 
               color: isVisitado
-                  ? mibancoGreen.withOpacity(0.1)
-                  : mibancoYellow.withOpacity(0.2),
+
+                  ? mibancoGreen
+                      .withOpacity(0.2)
+
+                  : mibancoYellow
+                      .withOpacity(0.2),
 
               borderRadius:
-                  BorderRadius.circular(12),
+                  BorderRadius.circular(
+                14,
+              ),
 
             ),
 
             child: Icon(
 
               isVisitado
-                  ? Icons.check_circle_rounded
-                  : Icons.pending_rounded,
+
+                  ? Icons
+                      .check_circle_rounded
+
+                  : Icons
+                      .pending_rounded,
 
               color: isVisitado
+
                   ? mibancoGreen
+
                   : mibancoYellow,
 
             ),
@@ -611,11 +824,12 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
             style: const TextStyle(
 
-              fontWeight: FontWeight.bold,
+              fontWeight:
+                  FontWeight.bold,
 
-              fontSize: 15,
+              fontSize: 16,
 
-              color: Color(0xFF2D3142),
+              color: Colors.white,
 
             ),
 
@@ -623,8 +837,9 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
           subtitle: Padding(
 
-            padding: const EdgeInsets.only(
-              top: 6.0,
+            padding:
+                const EdgeInsets.only(
+              top: 8.0,
             ),
 
             child: Row(
@@ -635,23 +850,34 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
                   cliente.gestion,
 
-                  style: const TextStyle(
+                  style:
+                      const TextStyle(
 
                     fontSize: 12,
 
-                    color: Colors.grey,
+                    color:
+                        Colors.white70,
 
                   ),
 
                 ),
 
-                const SizedBox(width: 8),
+                const SizedBox(
+                    width: 8),
 
                 const Text(
+
                   "•",
+
+                  style: TextStyle(
+                    color:
+                        Colors.white70,
+                  ),
+
                 ),
 
-                const SizedBox(width: 8),
+                const SizedBox(
+                    width: 8),
 
                 Text(
 
@@ -661,11 +887,14 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
                     fontSize: 12,
 
-                    fontWeight: FontWeight.bold,
+                    fontWeight:
+                        FontWeight.bold,
 
                     color: isVisitado
+
                         ? mibancoGreen
-                        : Colors.orange,
+
+                        : mibancoYellow,
 
                   ),
 
@@ -681,7 +910,7 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
             Icons.chevron_right_rounded,
 
-            color: mibancoGreen,
+            color: mibancoYellow,
 
           ),
 
@@ -693,20 +922,25 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
   }
 
+  // BOTTOM NAV
   Widget _buildBottomNav() {
 
     return Container(
 
       decoration: BoxDecoration(
 
+        color: mibancoCard,
+
         boxShadow: [
 
           BoxShadow(
 
             color:
-                Colors.black.withOpacity(0.1),
+                Colors.black.withOpacity(
+              0.3,
+            ),
 
-            blurRadius: 10,
+            blurRadius: 12,
 
           ),
 
@@ -716,13 +950,15 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
       child: BottomNavigationBar(
 
-        currentIndex: _selectedIndex,
+        currentIndex:
+            _selectedIndex,
 
         onTap: (index) {
 
           setState(() {
 
-            _selectedIndex = index;
+            _selectedIndex =
+                index;
 
           });
 
@@ -731,17 +967,20 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
         type:
             BottomNavigationBarType.fixed,
 
-        backgroundColor: Colors.white,
+        backgroundColor:
+            mibancoCard,
 
-        selectedItemColor: mibancoGreen,
+        selectedItemColor:
+            mibancoYellow,
 
         unselectedItemColor:
-            Colors.grey.shade400,
+            Colors.white54,
 
         selectedLabelStyle:
             const TextStyle(
 
-          fontWeight: FontWeight.bold,
+          fontWeight:
+              FontWeight.bold,
 
           fontSize: 12,
 
@@ -751,7 +990,8 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
 
           BottomNavigationBarItem(
 
-            icon: Icon(Icons.home_rounded),
+            icon:
+                Icon(Icons.home_rounded),
 
             label: "Inicio",
 
@@ -760,7 +1000,10 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
           BottomNavigationBarItem(
 
             icon: Icon(
-              Icons.assignment_ind_rounded,
+
+              Icons
+                  .assignment_ind_rounded,
+
             ),
 
             label: "Mi Cartera",
@@ -770,7 +1013,10 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
           BottomNavigationBarItem(
 
             icon: Icon(
-              Icons.chat_bubble_outline_rounded,
+
+              Icons
+                  .chat_bubble_outline_rounded,
+
             ),
 
             label: "Mensajes",
@@ -780,7 +1026,10 @@ class _CarteraDiariaScreenState extends State<CarteraDiariaScreen> {
           BottomNavigationBarItem(
 
             icon: Icon(
-              Icons.more_horiz_rounded,
+
+              Icons
+                  .more_horiz_rounded,
+
             ),
 
             label: "Más",
